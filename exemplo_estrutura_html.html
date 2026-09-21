@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os Caipiras - Restaurante</title>
+    <meta name="description" content="Os Caipiras - A tranquilidade e o sabor do interior pertinho de você!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* CORES */
+        :root {
+            --color-primary: #2d5016;
+            --color-accent: #d84630;
+            --color-light: #f5f5f5;
+            --color-dark: #333;
+            --color-gold: #b8860b;
+        }
+
+        /* HEADER & NAVEGAÇÃO */
+        header {
+            background: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--color-primary);
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--color-accent);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(45, 80, 22, 0.7), rgba(45, 80, 22, 0.7)),
+                        url('fachada.jpg') center/cover;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--color-accent);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            background: #b8360f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* CONTAINER RESPONSIVO */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* SEÇÃO DE APRESENTAÇÃO */
+        .choice-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .choice-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .choice-title h2 {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            font-family: 'Georgia', serif;
+            margin-bottom: 10px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--color-light);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .feature-card img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        /* CARDÁPIO SECTION */
+        .menu-section {
+            padding: 80px 20px;
+            background: var(--color-light);
+        }
+
+        .menu-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid var(--color-primary);
+            color: var(--color-primary);
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .menu-item-info {
+            padding: 20px;
+        }
+
+        .menu-item h3 {
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        .menu-item p {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        .add-btn {
+            padding: 8px 15px;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #b8360f;
+        }
+
+        /* GALERIA */
+        .gallery-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            padding: 50px 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            color: var(--color-gold);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--color-gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background: var(--color-accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            text-align: center;
+            color: #ccc;
+        }
+
+        /* FORMULÁRIO */
+        .form {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-primary);
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 50px 20px;
+                min-height: 400px;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-container">
+            <img src="logo.png" alt="Os Caipiras" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="#home">INÍCIO</a></li>
+                    <li><a href="#menu">CARDÁPIO</a></li>
+                    <li><a href="#about">SOBRE</a></li>
+                    <li><a href="#contact">CONTATO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <h1>O Lugar ideal para você e sua família!</h1>
+        <p>A tranquilidade e o sabor do interior pertinho de você!</p>
+        <div>
+            <a href="#menu" class="btn">VER CARDÁPIO</a>
+            <a href="#contact" class="btn">FAZER RESERVA</a>
+        </div>
+    </section>
+
+    <!-- APRESENTAÇÃO -->
+    <section class="choice-section">
+        <div class="container">
+            <div class="choice-title">
+                <h2>A ESCOLHA IDEAL</h2>
+                <p>Oferecemos um ambiente familiar e aconchegante com o toque autêntico do interior</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <h3>🍽️ Ambiente Familiar</h3>
+                    <p>Espaço aconchegante para você e sua família</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>🎪 Playground Gratuito</h3>
+                    <p>Diversão garantida para as crianças</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>🅿️ Estacionamento Gratuito</h3>
+                    <p>Estacione sem preocupações</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <h3>🏡 Toque do Interior</h3>
+                    <p>Autêntica gastronomia caipira</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CARDÁPIO -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--color-primary); font-size: 2.5rem;">CARDÁPIO</h2>
+
+            <div class="menu-filters">
+                <button class="filter-btn active">Todos</button>
+                <button class="filter-btn">Carnes</button>
+                <button class="filter-btn">Acompanhamentos</button>
+                <button class="filter-btn">Bebidas</button>
+                <button class="filter-btn">Sobremesas</button>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="costela.jpg" alt="Costela de Ripa">
+                    <div class="menu-item-info">
+                        <h3>Costela de Ripa</h3>
+                        <p>Nossa especialidade! Preparada a partir da parte nobre da costela.</p>
+                        <div class="menu-item-footer">
+                            <span class="price">R$ 65,00</span>
+                            <button class="add-btn">+ Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Mais items aqui -->
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="gallery-section">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 50px; color: var(--color-primary); font-size: 2.5rem;">GALERIA</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="img1.jpg" alt="Ambiente">
+                </div>
+                <div class="gallery-item">
+                    <img src="img2.jpg" alt="Pratos">
+                </div>
+                <div class="gallery-item">
+                    <img src="img3.jpg" alt="Playground">
+                </div>
+                <!-- Mais imagens -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contact" class="menu-section">
+        <div class="container" style="max-width: 600px;">
+            <h2 style="text-align: center; margin-bottom: 50px; color: var(--color-primary); font-size: 2.5rem;">CONTATO & RESERVA</h2>
+
+            <form class="form">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefone</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Data Desejada</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Horário</label>
+                    <input type="time" id="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="people">Quantidade de Pessoas</label>
+                    <input type="number" id="people" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Observações</label>
+                    <textarea id="message"></textarea>
+                </div>
+                <button type="submit" class="btn" style="width: 100%; margin: 0;">CONFIRMAR RESERVA</button>
+            </form>
+
+            <div style="margin-top: 50px; text-align: center; color: var(--color-primary);">
+                <h3>📍 Localização</h3>
+                <p>Rod Regis Bitencourt, 5313 - km 274,5</p>
+                <p>Taboão da Serra - SP</p>
+                <h3 style="margin-top: 20px;">📞 Contato</h3>
+                <p><strong>Telefone:</strong> (11) 4245-6367</p>
+                <p><strong>WhatsApp:</strong> +55 11 4245-6367</p>
+                <p><strong>Horário:</strong> Todos os dias das 10h às 18h</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>Os Caipiras</h3>
+                    <p>A tranquilidade e o sabor do interior pertinho de você!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#menu">Cardápio</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Siga-nos</h3>
+                    <div class="social-icons">
+                        <a href="https://facebook.com/OsCaipirasBar" target="_blank">f</a>
+                        <a href="https://instagram.com/oscaipirasbar" target="_blank">📷</a>
+                        <a href="https://wa.me/+551142456367" target="_blank">WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Os Caipiras. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript para funcionalidades básicas
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Filtro de cardápio
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Implementar lógica de filtro aqui
+            });
+        });
+
+        // Integração WhatsApp
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nome = document.getElementById('name').value;
+            const telefone = document.getElementById('phone').value;
+            const data = document.getElementById('date').value;
+            const hora = document.getElementById('time').value;
+            const pessoas = document.getElementById('people').value;
+            const msg = document.getElementById('message').value;
+
+            const mensagem = `Olá! Gostaria de fazer uma reserva:\n\nNome: ${nome}\nTelefone: ${telefone}\nData: ${data}\nHora: ${hora}\nPessoas: ${pessoas}\nObservações: ${msg}`;
+
+            const url = `https://wa.me/+551142456367?text=${encodeURIComponent(mensagem)}`;
+            window.open(url, '_blank');
+        });
+    </script>
+</body>
+</html>

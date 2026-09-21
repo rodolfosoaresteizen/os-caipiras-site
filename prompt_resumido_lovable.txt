@@ -1,0 +1,108 @@
+🍽️ CRIAR WEBSITE MODERNO PARA RESTAURANTE OS CAIPIRAS
+
+Crie um website responsivo (mobile, tablet, desktop) para o restaurante "Os Caipiras" com as seguintes características:
+
+📍 INFORMAÇÕES DO RESTAURANTE:
+- Nome: Os Caipiras
+- Slogan: "A tranquilidade e o sabor do interior pertinho de você!"
+- Endereço: Rod Regis Bitencourt, 5313 - km 274,5 (Dentro do Rancho Arara Azul) - Taboão da Serra - SP
+- Telefone: (11) 4245-6367 | WhatsApp: +55 11 4245-6367
+- Horário: Todos os dias das 10h às 18h
+- Especialidade: Costela de Ripa
+- Diferenciais: Ambiente familiar, Playground gratuito, Estacionamento gratuito
+
+🌐 ESTRUTURA DO SITE - 4 SEÇÕES PRINCIPAIS:
+
+1️⃣ INÍCIO (HOME)
+   - Hero com carousel de imagens do restaurante
+   - Headline grande: "O Lugar ideal para você e sua família!"
+   - 2 Botões de ação: "VER CARDÁPIO" e "FAZER RESERVA"
+   - Seção "A Escolha Ideal" com ícones de diferenciais
+   - Destaque para especialidade (Costela de Ripa)
+   - Gallery preview com 6 imagens
+   - Footer com contato, endereço, redes sociais
+
+2️⃣ CARDÁPIO
+   - Categorias: Carnes, Acompanhamentos, Bebidas, Sobremesas
+   - Cada item: foto, nome, descrição, preço
+   - Filtros por categoria
+   - SISTEMA DE PEDIDOS INTEGRADO:
+     * Adicionar items ao carrinho com quantidade
+     * Carrinho flutuante com resumo
+     * Formulário de checkout:
+       - Nome, telefone, endereço (se entrega)
+       - Data e horário desejado
+       - Opção retirada ou entrega
+       - Observações especiais
+     * Enviar pedido direto para WhatsApp do restaurante via API
+
+3️⃣ SOBRE
+   - História: "Em 2001 o Rancho Arara Azul foi fundado..."
+   - Missão e diferenciais
+   - Galeria completa com lightbox
+   - Informações sobre ambiente, especialidades e infraestrutura
+
+4️⃣ CONTATO
+   - Formulário de contato (nome, email, telefone, mensagem)
+   - SISTEMA DE RESERVAS:
+     * Nome, data, horário, quantidade de pessoas
+     * Observações especiais
+     * Enviar via WhatsApp
+   - Mapa Google Maps embutido
+   - Informações de contato com links clicáveis
+   - Horário funcionamento
+
+🎨 DESIGN & CORES:
+- Cor Principal: Verde Escuro (#2d5016)
+- Cor de Destaque: Laranja/Vermelho (#d84630)
+- Fundo: Branco/Creme (#f5f5f5)
+- Texto: Cinza Escuro (#333333)
+- Acentos: Dourado (#b8860b)
+
+Tipografia:
+- Headlines: Serif elegante (Georgia, Playfair Display)
+- Body: Sans-serif limpo (Open Sans, Roboto)
+
+🔧 FUNCIONALIDADES TÉCNICAS:
+✓ Responsivo 100% (mobile first)
+✓ Menu hamburger para mobile
+✓ Carousel de imagens com autoplay
+✓ Formulários com validação em tempo real
+✓ Integração WhatsApp API para pedidos e reservas
+✓ Carrinho de compras com localStorage
+✓ Lightbox para galeria
+✓ Google Maps embutido
+✓ Animações suaves (hover, scroll reveal)
+✓ Lazy loading de imagens
+✓ SEO otimizado
+✓ Acessibilidade WCAG 2.1
+
+📱 RESPONSIVIDADE:
+- Mobile (até 768px)
+- Tablet (768px - 1024px)
+- Desktop (acima de 1024px)
+- Botões touch-friendly (mín. 44x44px)
+
+🖼️ IMAGENS:
+Use as imagens do site atual do restaurante:
+- Fachada e ambiente
+- Pratos (especialmente costela de ripa)
+- Playground
+- Detalhes decorativos
+- Logo em alta resolução
+
+✨ EXTRAS:
+- Dark mode (opcional)
+- Transições suaves entre páginas
+- Loading states nos formulários
+- Confirmação de sucesso em formulários
+- Design system consistente
+- Links para redes sociais (Facebook, Instagram)
+
+🚀 TESTE EM:
+- iPhone (mobile)
+- Android (mobile)
+- iPad (tablet)
+- Desktop (Chrome, Firefox, Safari)
+
+COMECE AGORA! O site deve ser moderno, profissional, pronto para funcionar e atrair clientes para este restaurante familiar que oferece a autêntica gastronomia caipira!
